@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сириус Президентский лицей</title>
+    <style>
+        /* Общие стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #fff;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Шапка */
+        header {
+            background-color: #d40000;
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 60px;
+            margin-right: 15px;
+        }
+        
+        .logo-text h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .logo-text p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: opacity 0.3s;
+        }
+        
+        nav ul li a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+        
+        /* Герой-секция */
+        .hero {
+            background: linear-gradient(rgba(212, 0, 0, 0.8), rgba(212, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: white;
+            color: #d40000;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-3px);
+        }
+        
+        /* О лицее */
+        .about {
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .section-title {
+            color: #d40000;
+            font-size: 36px;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background-color: #d40000;
+            bottom: -10px;
+            left: 25%;
+        }
+        
+        .about-content {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .about-card {
+            flex-basis: 30%;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            transition: transform 0.3s;
+        }
+        
+        .about-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .about-card i {
+            font-size: 40px;
+            color: #d40000;
+            margin-bottom: 20px;
+        }
+        
+        .about-card h3 {
+            color: #d40000;
+            margin-bottom: 15px;
+        }
+        
+        /* Программы */
+        .programs {
+            background-color: #f9f9f9;
+            padding: 80px 0;
+        }
+        
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .program-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .program-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .program-card-content {
+            padding: 20px;
+        }
+        
+        .program-card h3 {
+            color: #d40000;
+            margin-bottom: 10px;
+        }
+        
+        /* Новости */
+        .news {
+            padding: 80px 0;
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .news-card {
+            border: 1px solid #eee;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .news-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .news-card-content {
+            padding: 20px;
+        }
+        
+        .news-card h3 {
+            color: #d40000;
+            margin-bottom: 10px;
+        }
+        
+        .news-card .date {
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        /* Контакты */
+        .contacts {
+            background-color: #d40000;
+            color: white;
+            padding: 80px 0;
+        }
+        
+        .contacts .section-title {
+            color: white;
+        }
+        
+        .contacts .section-title:after {
+            background-color: white;
+        }
+        
+        .contacts-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+        
+        .contact-info {
+            flex-basis: 48%;
+        }
+        
+        .contact-info h3 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        
+        .contact-form {
+            flex-basis: 48%;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+        }
+        
+        .contact-form h3 {
+            color: #d40000;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: bold;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+        }
+        
+        .submit-btn {
+            background-color: #d40000;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: #b30000;
+        }
+        
+        /* Подвал */
+        footer {
+            background-color: #222;
+            color: white;
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section {
+            flex-basis: 30%;
+            margin-bottom: 20px;
+        }
+        
+        .footer-section h3 {
+            color: #d40000;
+            margin-bottom: 20px;
+        }
+        
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: #d40000;
+        }
+        
+        .copyright {
+            border-top: 1px solid #444;
+            padding-top: 20px;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 10px;
+            }
+            
+            .about-card {
+                flex-basis: 100%;
+            }
+            
+            .contact-info,
+            .contact-form {
+                flex-basis: 100%;
+                margin-bottom: 30px;
+            }
+            
+            .footer-section {
+                flex-basis: 100%;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-text">
+                        <h1>Сириус Президентский лицей</h1>
+                        <p>Образование будущего</p>
+                    </div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#about">О лицее</a></li>
+                        <li><a href="#programs">Программы</a></li>
+                        <li><a href="#news">Новости</a></li>
+                        <li><a href="#contacts">Контакты</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Герой-секция -->
+    <section class="hero">
+        <div class="container">
+            <h2>Добро пожаловать в Президентский лицей "Сириус"</h2>
+            <p>Инновационное образовательное пространство для одаренных детей, где созданы все условия для раскрытия талантов и профессионального самоопределения</p>
+            <a href="#programs" class="btn">Узнать больше</a>
+        </div>
+    </section>
+    
+    <!-- О лицее -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">О нашем лицее</h2>
+            <p>Президентский лицей "Сириус" - это уникальное образовательное учреждение, созданное для выявления, поддержки и развития одаренных детей со всей России.</p>
+            
+            <div class="about-content">
+                <div class="about-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Высокий уровень образования</h3>
+                    <p>Программы, разработанные ведущими специалистами в своих областях, позволяют достигать выдающихся результатов.</p>
+                </div>
+                
+                <div class="about-card">
+                    <i class="fas fa-flask"></i>
+                    <h3>Современные лаборатории</h3>
+                    <p>Оснащенные по последнему слову техники лаборатории для научных исследований и экспериментов.</p>
+                </div>
+                
+                <div class="about-card">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h3>Лучшие преподаватели</h3>
+                    <p>Педагогический состав включает в себя докторов наук, победителей международных олимпиад и практикующих специалистов.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Программы -->
+    <section id="programs" class="programs">
+        <div class="container">
+            <h2 class="section-title">Образовательные программы</h2>
+            <p>Мы предлагаем углубленное изучение предметов по нескольким направлениям.</p>
+            
+            <div class="programs-grid">
+                <div class="program-card">
+                    <img src="https://images.unsplash.com/photo-1554475901-4538ddfbccc2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Естественные науки">
+                    <div class="program-card-content">
+                        <h3>Естественные науки</h3>
+                        <p>Углубленное изучение математики, физики, химии и биологии с акцентом на исследовательскую деятельность.</p>
+                    </div>
+                </div>
+                
+                <div class="program-card">
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Информационные технологии">
+                    <div class="program-card-content">
+                        <h3>Информационные технологии</h3>
+                        <p>Программирование, искусственный интеллект, кибербезопасность и другие современные направления IT.</p>
+                    </div>
+                </div>
+                
+                <div class="program-card">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Гуманитарные науки">
+                    <div class="program-card-content">
+                        <h3>Гуманитарные науки</h3>
+                        <p>Литература, история, философия и языки с возможностью участия в международных проектах.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Новости -->
+    <section id="news" class="news">
+        <div class="container">
+            <h2 class="section-title">Новости и события</h2>
+            
+            <div class="news-grid">
+                <div class="news-card">
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Новость 1">
+                    <div class="news-card-content">
+                        <h3>Международная олимпиада по математике</h3>
+                        <p class="date">15 мая 2023</p>
+                        <p>Наши ученики завоевали 3 золотые медали на престижной международной олимпиаде.</p>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <img src="https://images.unsplash.com/photo-1541178735493-479c1a27ed24?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80" alt="Новость 2">
+                    <div class="news-card-content">
+                        <h3>Новая научная лаборатория</h3>
+                        <p class="date">28 апреля 2023</p>
+                        <p>Открытие современной лаборатории биотехнологий с уникальным оборудованием.</p>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Новость 3">
+                    <div class="news-card-content">
+                        <h3>Летняя школа "Сириус"</h3>
+                        <p class="date">10 апреля 2023</p>
+                        <p>Объявлен набор на летнюю образовательную смену для школьников со всей России.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Контакты -->
+    <section id="contacts" class="contacts">
+        <div class="container">
+            <h2 class="section-title">Контакты</h2>
+            
+            <div class="contacts-content">
+                <div class="contact-info">
+                    <h3>Как нас найти</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> г. Сочи, Олимпийский проспект, 1</p>
+                    <p><i class="fas fa-phone"></i> +7 (862) 123-45-67</p>
+                    <p><i class="fas fa-envelope"></i> info@sirius-lyceum.ru</p>
+                    <p><i class="fas fa-clock"></i> Пн-Пт: 8:00 - 18:00</p>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Обратная связь</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Ваше имя</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Сообщение</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Отправить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Сириус Президентский лицей</h3>
+                    <p>Инновационное образовательное учреждение для одаренных детей.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Быстрые ссылки</h3>
+                    <ul style="list-style: none;">
+                        <li><a href="#about" style="color: white; text-decoration: none;">О лицее</a></li>
+                        <li><a href="#programs" style="color: white; text-decoration: none;">Программы</a></li>
+                        <li><a href="#news" style="color: white; text-decoration: none;">Новости</a></li>
+                        <li><a href="#contacts" style="color: white; text-decoration: none;">Контакты</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Мы в соцсетях</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Сириус Президентский лицей. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
